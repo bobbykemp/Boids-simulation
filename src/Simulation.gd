@@ -1,8 +1,9 @@
 extends Node2D
 
-const BOIDS_COUNT = 300
+const BOIDS_COUNT = 20
 
 onready var boid_scene = preload("res://src/Boid.tscn")
+onready var touch_scene = preload("res://src/touch.tscn")
 onready var boids_container = $Boids
 onready var water = $Water
 
@@ -23,7 +24,8 @@ func _ready():
 	
 	for boid in boids_container.get_children():
 		boid.boids = boids
-	
+		
+
 
 func _on_MoveSlider_value_changed(value):
 	for boid in boids:
@@ -52,3 +54,4 @@ func _on_SeperationSlider_value_changed(value):
 
 func _on_DistortionSlider_value_changed(value):
 	water.material.set_shader_param("distortion_amount", value)
+
